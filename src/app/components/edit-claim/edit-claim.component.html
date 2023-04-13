@@ -1,0 +1,74 @@
+
+<div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+    {{errorMessage}}
+</div>
+<div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+    {{successMessage}}
+</div>
+
+<div class="container top-title">
+    <a [routerLink]="['/']">Claims</a>
+</div>
+  
+<div class="container custom-width card shadow d-flex justify-content-center mt-5">
+    <div class="container card high-pos" >
+        <button type="button" class="btn btn-outline-secondary" [routerLink]="['/']" > Return</button>
+    </div>
+
+    <div class="container large-box" >
+        <div class="row">
+            <div class="card col-md-8 offset-md-2 offset-md-2">
+                <div class="row">
+                    <div class="container sub-top-title text-center">
+                        <h3>Edit Claim</h3>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+        
+                            <div class="form-group">
+                                <label> Claim Number </label>
+                                <input type="text" class="form-control" id="claimNb" [(ngModel)]="claim.claimNb"
+                                    name="claimNb">
+                            </div>
+        
+                            <div class="form-group">
+                                <label> Accident Date</label>
+                                <input type="date" class="form-control" id="accidentDate" [(ngModel)]="claim.accidentDate"
+                                    name="accidentDate">
+                            </div>
+        
+                            <div class="form-group">
+                                <label> Creation Date</label>
+                                <input type="date" class="form-control" id="creationDate" [(ngModel)]="claim.creationDate"
+                                    name="creationDate">
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label> Policy number</label>
+                                <input type="text" class="form-control" id="policyNb" [(ngModel)]="policyNb"
+                                    name="policyNumber" list="datalistOptions">
+                                <datalist id="datalistOptions">
+                                    <option *ngFor="let nb of pnumbers" [value]="nb">
+                                </datalist>
+                            </div> -->
+                            
+                            <div class="form-group">
+                                <label> Status</label>
+                                <select id="status" name="status"  class="form-control" [(ngModel)]="claim.status">
+                                    <option value="open">Open</option>
+                                    <option value="ongoing">Ongoing</option>
+                                    <option value="closed">Closed</option>
+                                </select>
+                            </div>
+        
+                            <br />
+                            <button class="btn btn-success" type="submit">Submit</button>
+        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

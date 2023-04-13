@@ -1,0 +1,63 @@
+
+<div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+  {{errorMessage}}
+</div>
+<div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+  {{successMessage}}
+</div>
+
+<div class="container top-title">
+  <a [routerLink]="['/']">Claims</a>
+</div>
+
+<div class="row">
+  <div class="btn-group col-2" role="group" class="container home-menu" aria-label="Basic example">
+    <button *ngIf="!showAddClaim"  type="button" class="btn btn-secondary" (click)="toggleShow()">New Claim</button>
+    <button *ngIf="!showAddClaim" type="button" class="btn btn-outline-secondary" (click)="showAddPolicy()">New Policy</button>
+    <button *ngIf="showAddClaim" type="button" class="btn btn-outline-secondary" (click)="toggleShow()">Return</button>
+  </div>
+  <div class="col-10 container btn-group filter-btn">
+    <div>
+      <div class="input-group input-group-sm mb-3">
+        <input type="text" id="inputFilterIdClaim" class="form-control" [(ngModel)]="nbFilter"
+        aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Filter by Number">
+        
+        <select class="form-select"  [(ngModel)]="statusFilter" 
+          aria-label="Filter by status" id="inputFilterStatus">
+          <!-- <option value="" selected></option> -->
+          <option value="open">Open</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="closed">Closed</option>
+        </select>
+
+        <button type="button" class="btn btn-outline-secondary" (click)="doFiltererClaims()">Search</button>  
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showAddClaim" class="container custom-width card shadow d-flex justify-content-center mt-3">
+  <div class="wrapp">
+    <div class="container">
+      <app-add-claim></app-add-claim>
+    </div>
+  </div>
+</div>
+<div *ngIf="!showAddClaim" >
+  <div  *ngFor="let claim of claims" class="container custom-width card shadow d-flex justify-content-center mt-3">
+    <div class="row">
+      <div class="col-10">
+        <div class="container">
+          <span class="status" >{{claim.status}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Claim number : &nbsp;&nbsp; <b>{{claim.claimNb}}</b>
+        </div> 
+      </div> 
+      <div class="col-2 btn-group" role="group" id="claims-btns">
+        <button (click)="openClaim(claim.claimId)" type="button" class="btn btn-default"><mat-icon>visibility</mat-icon></button>
+        <button (click)="updateClaim(claim.claimId)" type="button" class="btn btn-default"><mat-icon>edit</mat-icon></button>
+        <button (click)="deleteClaim(claim.claimId)" type="button" class="btn btn-default"><mat-icon>delete</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</div>

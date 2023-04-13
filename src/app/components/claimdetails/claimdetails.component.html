@@ -1,0 +1,42 @@
+<div class="container top-title">
+  <a [routerLink]="['/']">Claims</a> > <a [routerLink]="['/']" *ngIf="claim">Nb{{claim.claimNb}}</a>
+</div>
+<div class="container card shadow d-flex justify-content-center mt-5">
+  <mat-tab-group >
+    <!-- tab1 -->
+    <mat-tab label="Claim"> 
+      <div class="container">
+        <div class="sub-top-title">
+          <h3>Claim details</h3>
+        </div>
+        <div class="container large-box" >
+          <app-one-claim-details [claim]="claim"></app-one-claim-details>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- tab2 -->
+    <mat-tab label="Policy">
+      <div class="container">
+        <div class="container sub-top-title">
+          <h3>Related Policy</h3>
+        </div>
+        <div class="container large-box" *ngIf="policy">
+          <app-related-policy [policy]="policy"></app-related-policy>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- tab3 -->
+    <mat-tab label="Photos">
+      <div class="container">
+        <div class="container sub-top-title sub-top-title">
+          <h3>Related Photos</h3>
+        </div>
+        <div class="container large-box" *ngIf="photos">
+          <app-related-photos [photos]="photos" [claimId]="claim.claimId"></app-related-photos>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

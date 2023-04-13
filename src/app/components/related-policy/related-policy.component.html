@@ -1,0 +1,21 @@
+<div class="container half">
+    <mat-list *ngIf="policy">
+      <mat-list-item><b>Number: </b> {{policy.policyNb}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Vehicule Number:</b> {{policy.vehiculeNb}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Insured name: </b> {{policy.insuredName}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Start Date: </b> {{policy.startDate|date}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>End date: </b> {{policy.endDate|date}}</mat-list-item><br>
+    </mat-list>
+  </div>
+  <div class="container half" >
+    
+    <div class="container" *ngIf="false">
+      <mat-form-field appearance="fill">
+        
+      </mat-form-field>
+    </div>
+</div>

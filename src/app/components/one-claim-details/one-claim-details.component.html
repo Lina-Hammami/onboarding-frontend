@@ -1,0 +1,11 @@
+<div class="container half">
+    <mat-list *ngIf="claim">
+      <mat-list-item><b>Number: </b> {{claim.claimNb}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Accident date:</b> {{claim.accidentDate|date}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Creation date: </b> {{claim.creationDate|date}}</mat-list-item><br>
+      <mat-divider></mat-divider><br>
+      <mat-list-item><b>Status: </b> {{claim.status}}</mat-list-item><br>
+    </mat-list>
+  </div>

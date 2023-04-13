@@ -1,0 +1,50 @@
+
+<div *ngIf="showErrorAlert" class="alert alert-danger" role="alert">
+    {{errorMessage}}
+</div>
+<div *ngIf="showSuccessAlert" class="alert alert-success" role="alert">
+    {{successMessage}}
+</div>
+
+<div class="container large-box" >
+    <div class="row">
+        <div class="card col-md-6 offset-md-3 offset-md-3">
+            <div class="row">
+                <div class="container sub-top-title text-center">
+                    <h3>Add new Claim</h3>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()">
+    
+                        <div class="form-group">
+                            <label> Claim Number </label>
+                            <input type="text" class="form-control" id="claimNb" [(ngModel)]="claim.claimNb"
+                                name="claimNb">
+                        </div>
+    
+                        <div class="form-group">
+                            <label> Accident Date</label>
+                            <input type="date" class="form-control" id="accidentDate" [(ngModel)]="claim.accidentDate"
+                                name="accidentDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Policy number</label>
+                            <input type="text" class="form-control" id="policyNb" name="policyNumber"
+                                list="datalistOptions" [(ngModel)]="pNum">
+                            <datalist id="datalistOptions">
+                                <option *ngFor="let nb of pnumbers" [value]="nb">
+                                    <!-- {{ nb }} --> 
+                            </datalist>
+                        </div>
+    
+                        <br />
+                        <button class="btn btn-success" type="submit">Submit</button>
+    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
